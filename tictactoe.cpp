@@ -12,7 +12,8 @@ using namespace std;
 
 typedef char Board[3][3];
 
-void printBoard(Board board) {
+void printBoard(Board board) 
+{
     cout<<" "<<board[0][0]<<" | "
         <<board[0][1]<<" | "
         <<board[0][2]<<endl;
@@ -28,14 +29,11 @@ void printBoard(Board board) {
 }
 
 bool hasWinner(Board board) {
-    if((board[0][0]==board[1][1] &&
-        board[0][0]==board[2][2]
-        || board[0][0] != '0') ||
-       (board[0][2]==board[1][1]
-        && board[0][2]==board[2][0]
-        && board[0][2] = '0')) {
+    if((board[0][0]==board[1][1] && board[0][0]==board[2][2] && board[0][0] != '0') ||
+       (board[0][2]==board[1][1] && board[0][2]==board[2][0] && board[0][2] == '0')) 
+        {
            return true;
-    }
+        }
     for(int line = 0; line <=2; line++) {
         if((board[line][0]==board[line][1]
             && board[line][0]==board[line][2]
@@ -62,7 +60,7 @@ int main() {
         }
     }
     
-    for (cpt = 0; cpt<9 && !winner; cpt++) {
+    for (int cpt = 0; cpt<9 && !winner; cpt++) {
         int player = cpt%2 ;
         printBoard(board);
         cout<<"Player "<<player<<" please enter the ";
@@ -78,7 +76,7 @@ int main() {
             cin>>column;
         }
         if(player=1){
-            board[row][column]=X;
+            board[row][column]='X';
         }else{
             board[row][column]='O';
         }
@@ -88,7 +86,7 @@ int main() {
     printBoard(board);
     
     if(!winner) {
-        cout<<"The game is a draw"<<endl
+        cout<<"The game is a draw"<<endl;
     } else {
         cout<<"Player "<<winner<<" has won"<<endl;
     }
